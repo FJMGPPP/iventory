@@ -1,0 +1,56 @@
+<resources>
+    <string name="app_name">Inventory</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="inventory">Inventory</string>
+    <string name="login">Login</string>
+    <string name="userHint">Escribe tu email</string>
+    <string name="passwordHint">Escribe tu contraseña</string>
+    <string name="tvRecording">I remember</string>
+    <string name="loginApps">Login for</string>
+    <string name="registerbtn">Register</string>
+    <string name="sing_in">Sign</string>
+    <string name="registroTitle">Registro</string>
+    <string name="RegisterNombreUsuario">Dame tu nombre de usuario</string>
+    <string name="RegisterCorreoUsuario">Dame tu correo</string>
+    <string name="RegisterPasswordUsuario">Dame tu contraseña</string>
+    <string name="RegisterPasswordSegundaUsuario">Repite tu contraseña</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="ImgbtnInventory">Un boton imagen de inventario</string>
+    <string name="ImgbtnDepedencia">Un boton imagen de  Dependencia</string>
+    <string name="ImgbtnSecciones">Un boton imagen de  Secciones</string>
+    <string name="ImgbtnProducts">Un boton imagen de productos</string>
+    <string name="ImgbtnAbout">" Un boton imagen sobre mi"</string>
+    <string name="ImgbtnSettings">Un boton imagen de ajustes</string>
+    <string name="FechaCreacion">Fecha de Creacion</string>
+    <string name="fechaFin">Fecha de Fin</string>
+    <string name="fechaActivo">Fecha de Activo</string>
+    <string name="ModficarInventario">Modificar Inventario</string>
+    <string name="Okey">Okey</string>
+    <string name="fab_contentDescription">un boton flotante para añadir</string>
+    <string name="Nombre">Nombre</string>
+    <string name="shortNombre">Nombre corto</string>
+    <string name="Descripcion">Descripcion</string>
+    <string name="AboutAsMenu">about us</string>
+    <string name="SettingsMenu">Ajustes</string>
+    <string name="action_order_dependecy">ordenar</string>
+</resources>

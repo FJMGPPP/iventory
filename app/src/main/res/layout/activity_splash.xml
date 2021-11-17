@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textSize="@dimen/splash_tvName_textsize"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="@dimen/splash_tvName_marginBottom"
+        android:fontFamily="@font/newake"/>
+
+    <ImageView
+        android:id="@+id/logoImg"
+        android:layout_width="164dp"
+        android:layout_height="167dp"
+        android:layout_gravity="top|center_horizontal"
+        android:layout_marginTop="@dimen/splash_logosrc_marginTop"
+        android:contentDescription="@string/inventory"
+        app:srcCompat="@drawable/ic_logo" />
+<!---
+    <ImageView
+        android:id="@+id/GoogleImg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_google"
+        android:layout_gravity="bottom|left"
+        android:layout_marginLeft="@dimen/splash_GoogleAndFacebook_marginBordingSpace"
+        android:layout_marginBottom="@dimen/splash_GoogleAndFacebook_marginBottomSpace"/>
+    <ImageView
+        android:id="@+id/FacebookImg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_facebook"
+        android:layout_gravity="bottom|right"
+        android:layout_marginRight="@dimen/splash_GoogleAndFacebook_marginBordingSpace"
+        android:layout_marginBottom="@dimen/splash_GoogleAndFacebook_marginBottomSpace"/>
+        -->
+</FrameLayout>

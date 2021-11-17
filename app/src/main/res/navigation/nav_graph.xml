@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/dashBoardFragment">
+
+    <fragment
+        android:id="@+id/dashBoardFragment"
+        android:name="com.fjmg.inventory.ui.Dashboard.DashBoardFragment"
+        android:label="fragment_dash_board"
+        tools:layout="@layout/fragment_dash_board" >
+        <action
+            android:id="@+id/action_dashBoardFragment_to_aboutUsFragment"
+            app:destination="@id/aboutUsFragment" />
+        <action
+            android:id="@+id/action_dashBoardFragment_to_inventoryFragment"
+            app:destination="@id/inventoryFragment" />
+        <action
+            android:id="@+id/action_dashBoardFragment_to_dependencyFragment"
+            app:destination="@id/dependencyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/aboutUsFragment"
+        android:name="com.fjmg.inventory.ui.about.AboutUsFragment"
+        android:label="AboutUsFragment" />
+    <fragment
+        android:id="@+id/inventoryFragment"
+        android:name="com.fjmg.inventory.ui.inventory.InventoryFragment"
+        android:label="InventoryFragment" />
+    <fragment
+        android:id="@+id/dependencyFragment"
+        android:name="com.fjmg.inventory.ui.dependency.DependencyFragment"
+        android:label="DependencyFragment" />
+</navigation>
