@@ -25,12 +25,15 @@
         style="@style/HintTextApparence"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:layout_marginBottom="20dp">
+        android:layout_marginBottom="20dp"
+        app:errorEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtUser"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/userHint" />
+            android:hint="@string/userHint"
+            app:errorEnabled="true"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -41,10 +44,12 @@
         style="@style/HintTextApparence">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/passwordHint"
-            android:inputType="textPassword"/>
+            android:inputType="textPassword"
+            app:errorEnabled="true"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <LinearLayout
@@ -82,15 +87,21 @@
         android:text="@string/sing_in"
         android:textColor="@color/black" />
 
+    <ProgressBar
+        android:id="@+id/pbLogin"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.4"
+        android:visibility="invisible" />
+
     <TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_gravity="bottom|center"
-        android:layout_weight="1"
+        android:layout_weight="0.6"
         android:elegantTextHeight="true"
-        android:text="@string/loginApps"
-        android:textAlignment="center" />
+        android:gravity="bottom|center"
+        android:text="@string/loginApps" />
 
     <LinearLayout
         android:layout_width="match_parent"
