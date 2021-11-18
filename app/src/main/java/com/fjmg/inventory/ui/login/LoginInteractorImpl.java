@@ -4,14 +4,20 @@ import android.os.Handler;
 import android.text.TextUtils;
 
 import com.fjmg.inventory.data.model.User;
+import com.fjmg.inventory.utils.CommonUtils;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class LoginInteractorImpl
 {
     private LoginInteractor listener;
     interface LoginInteractor
     {
-        void onUserEmptyError();
+        void onEmailEmptyError();
         void onPasswordEmptyError();
+        void onEmailError();
+        void onPasswordError();
         void onAuthenticationEmptyError();
         void onSuccess();
     }
@@ -21,20 +27,35 @@ public class LoginInteractorImpl
             @Override
             public void run()
             {
-                    if (TextUtils.isEmpty(user.getUsername().trim()) && TextUtils.isEmpty(user.getPassword().trim()))
+                    if (TextUtils.isEmpty(user.getEmail().trim()) && TextUtils.isEmpty(user.getPassword().trim()))
                     {
-                        listener.onUserEmptyError();
+                        listener.onEmailEmptyError();
                         listener.onPasswordEmptyError();
                         return;
                     }
-                    if (TextUtils.isEmpty(user.getUsername().trim()))
+                    if (TextUtils.isEmpty(user.getEmail().trim()))
                     {
-                        listener.onUserEmptyError();
+                        listener.onEmailEmptyError();
                         return;
                     }
                     if (TextUtils.isEmpty(user.getPassword().trim()))
                     {
                         listener.onPasswordEmptyError();
+                        return;
+                    }
+                    if(!CommonUtils.isEmailValid(user.getEmail()))
+                    {
+                        listener.onEmailError();
+                        return;
+                    }
+                    if(!CommonUtils.isEmailValid(user.getEmail()))
+                    {
+                        listener.onEmailError();
+                        return;
+                    }
+                    if(!CommonUtils.isPasswordValid(user.getPassword()))
+                    {
+                        listener.onPasswordError();
                         return;
                     }
                     listener.onSuccess();

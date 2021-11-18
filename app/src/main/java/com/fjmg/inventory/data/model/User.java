@@ -3,11 +3,11 @@ package com.fjmg.inventory.data.model;
 public class User
 {
 
-    String username;
+    String email;
     String password;
-    public User(String username, String password)
+    public User(String email, String password)
     {
-        this.username = username;
+        this.email = email;
         this.password = password;
     }
 
@@ -15,7 +15,7 @@ public class User
         return password;
     }
 
-    public String getUsername() {
-        return username;
+    public String getEmail() {
+        return email;
     }
 }

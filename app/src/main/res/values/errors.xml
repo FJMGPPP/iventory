@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="errorUserEmpty">Error usuario vacio</string>
+    <string name="errorEmailEmpty">Error email vacio</string>
+    <string name="errorEmailInvalid">Error email invalido</string>
     <string name="errorPasswordEmpty">Error password vacio</string>
 </resources>

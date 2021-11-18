@@ -9,9 +9,13 @@ public interface LoginContract
         /**
          * Alternativas del caso de uso. set porque se modifica elementos de la vista
          */
-        void setUserEmptyError();
+        void setEmailEmptyError();
 
         void setPasswordEmptyError();
+
+        void setEmailError();
+
+        void setPasswordError();
 
         void setAuthenticationEmptyError();
 

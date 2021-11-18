@@ -21,9 +21,9 @@ public class LoginPresenter implements LoginContract.Presenter , LoginInteractor
     }
 
     @Override
-    public void onUserEmptyError() {
+    public void onEmailEmptyError() {
         view.hideProgressBar();
-        view.setUserEmptyError();
+        view.setEmailEmptyError();
     }
 
     @Override
@@ -33,8 +33,21 @@ public class LoginPresenter implements LoginContract.Presenter , LoginInteractor
     }
 
     @Override
-    public void onAuthenticationEmptyError() {
+    public void onEmailError() {
+        view.hideProgressBar();
+        view.setEmailError();
+    }
 
+    @Override
+    public void onPasswordError() {
+        view.hideProgressBar();
+        view.setPasswordError();
+    }
+
+    @Override
+    public void onAuthenticationEmptyError() {
+        view.hideProgressBar();
+        view.setAuthenticationEmptyError();
     }
 
     @Override
