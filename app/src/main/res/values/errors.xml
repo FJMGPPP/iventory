@@ -2,5 +2,6 @@
 <resources>
     <string name="errorEmailEmpty">Error email vacio</string>
     <string name="errorEmailInvalid">Error email invalido</string>
+    <string name="errorPasswordInvalid">Error Password invalido</string>
     <string name="errorPasswordEmpty">Error password vacio</string>
 </resources>

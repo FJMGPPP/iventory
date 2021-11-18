@@ -4,7 +4,7 @@ import com.fjmg.inventory.data.model.User;
 
 public interface LoginContract
 {
-    interface View
+    interface View extends OnLoginListener
     {
         /**
          * Alternativas del caso de uso. set porque se modifica elementos de la vista
@@ -17,17 +17,29 @@ public interface LoginContract
 
         void setPasswordError();
 
-        void setAuthenticationEmptyError();
-
-        void onSuccess();
-
         void showProgressBar();
 
         void hideProgressBar();
     }
+    interface LoginInteractor extends OnLoginListener
+    {
+        void onEmailEmptyError();
+        void onPasswordEmptyError();
+        void onEmailError();
+        void onPasswordError();
+    }
     interface Presenter
     {
         void validateCredentials(User user);
+    }
+    interface OnLoginListener
+    {
+        void onSuccess(String msg);
+        void onFail(String msg);
+    }
+    interface Repository
+    {
+        void login(User user);
     }
 }
 

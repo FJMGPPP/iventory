@@ -63,18 +63,21 @@ public class LoginActivity extends AppCompatActivity implements  LoginContract.V
     public void setPasswordError()
     {
         //Todo moificar error
-        binding.txtPassword.setError("Error");
+        binding.txtPassword.setError(getString(R.string.errorPasswordInvalid));
+    }
+
+
+
+    @Override
+    public void onSuccess(String msg) {
+        startActivity(new Intent(this, MainActivity.class));
     }
 
     @Override
-    public void setAuthenticationEmptyError() {
-        binding.txtEmail.setError(getString(R.string.errorEmailInvalid));
+    public void onFail(String msg) {
+
     }
-    //Usuario y contraseña correcta
-    @Override
-    public void onSuccess() {
-        startActivity(new Intent(this, MainActivity.class));
-    }
+
 
     @Override
     public void showProgressBar() {

@@ -11,16 +11,9 @@ import java.util.regex.Pattern;
 
 public class LoginInteractorImpl
 {
-    private LoginInteractor listener;
-    interface LoginInteractor
-    {
-        void onEmailEmptyError();
-        void onPasswordEmptyError();
-        void onEmailError();
-        void onPasswordError();
-        void onAuthenticationEmptyError();
-        void onSuccess();
-    }
+    private LoginContract.Repository repository;
+    private LoginContract.LoginInteractor listener;
+
     public void validateCredentials(User user)
     {
         new Handler().postDelayed(new Runnable() {
@@ -58,12 +51,14 @@ public class LoginInteractorImpl
                         listener.onPasswordError();
                         return;
                     }
-                    listener.onSuccess();
-
+                    //Todo Iniciar Instancia
+                    repository.get
+                    listener.onSuccess("fin");
+                    repository.login(user);
             }
         },2000);
     }
-    public LoginInteractorImpl(LoginInteractor listener)
+    public LoginInteractorImpl(LoginContract.LoginInteractor listener)
     {
        this.listener =  listener;
     }

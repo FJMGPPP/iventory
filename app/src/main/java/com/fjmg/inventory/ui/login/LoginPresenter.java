@@ -2,7 +2,7 @@ package com.fjmg.inventory.ui.login;
 
 import com.fjmg.inventory.data.model.User;
 
-public class LoginPresenter implements LoginContract.Presenter , LoginInteractorImpl.LoginInteractor
+public class LoginPresenter implements LoginContract.Presenter , LoginContract.LoginInteractor
 {
     private LoginContract.View view;
     private LoginInteractorImpl interactor;
@@ -44,16 +44,14 @@ public class LoginPresenter implements LoginContract.Presenter , LoginInteractor
         view.setPasswordError();
     }
 
+
     @Override
-    public void onAuthenticationEmptyError() {
-        view.hideProgressBar();
-        view.setAuthenticationEmptyError();
+    public void onSuccess(String msg) {
+        view.onSuccess("Fin");
     }
 
     @Override
-    public void onSuccess() {
-        view.hideProgressBar();
-        view.onSuccess();
+    public void onFail(String msg) {
 
     }
     //endregion
