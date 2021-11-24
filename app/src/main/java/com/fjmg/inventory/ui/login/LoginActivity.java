@@ -94,7 +94,6 @@ public class LoginActivity extends AppCompatActivity implements  LoginContract.V
                 Toast.makeText(getApplicationContext(),getString(R.string.errorLoginOnFail) , Toast.LENGTH_LONG).show();
                 break;
             case TipoSuccesAndFails.PERDIDA_CONEXION:
-                //Todo agregar error
                 Toast.makeText(getApplicationContext(),getString(R.string.error) , Toast.LENGTH_LONG).show();
                 break;
         }
