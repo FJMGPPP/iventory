@@ -43,6 +43,7 @@
         app:startIconDrawable="@drawable/ic_person_icon_bar">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtUserName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -62,6 +63,7 @@
         app:startIconDrawable="@drawable/ic_email_icon_bar">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/RegisterCorreoUsuario" />
@@ -75,13 +77,15 @@
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline6"
         app:layout_constraintStart_toStartOf="@+id/guideline5"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout3">>
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout3">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawableStart="@drawable/ic_lock_icon_bar"
-            android:hint="@string/RegisterPasswordUsuario" />
+            android:hint="@string/RegisterPasswordUsuario"
+            android:inputType="textPassword"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -92,13 +96,15 @@
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline6"
         app:layout_constraintStart_toStartOf="@+id/guideline5"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout4">>
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout4">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtPasswordCheck"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawableStart="@drawable/ic_lock_icon_bar"
-            android:hint="@string/RegisterPasswordSegundaUsuario" />
+            android:hint="@string/RegisterPasswordSegundaUsuario"
+            android:inputType="textPassword"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout

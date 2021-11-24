@@ -5,12 +5,19 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.fjmg.inventory.R;
+import com.fjmg.inventory.data.model.TipoSuccesAndFails;
 import com.fjmg.inventory.data.model.User;
 import com.fjmg.inventory.databinding.ActivityLoginBinding;
 import com.fjmg.inventory.ui.MainActivity;
+import com.fjmg.inventory.ui.Register.RegisterActivity;
+import com.fjmg.inventory.utils.CommonUtils;
 
 public class LoginActivity extends AppCompatActivity implements  LoginContract.View{
 
@@ -20,19 +27,21 @@ public class LoginActivity extends AppCompatActivity implements  LoginContract.V
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         binding.btnRegisterLogin.setOnClickListener(view -> {
-            startActivity(new Intent(this,RegisterActivity.class));
+            startActivity(new Intent(this, RegisterActivity.class));
         });
         binding.btnLogin.setOnClickListener(view ->
         {
             presenter.validateCredentials(new User(
                     binding.txtEmail.getText().toString(),
-                    binding.txtEmail.getText().toString()));
+                    binding.txtPassword.getText().toString()));
         });
+
+        binding.txtEmail.addTextChangedListener(new LoginTextWatcher(binding.txtEmail));
+        binding.txtPassword.addTextChangedListener(new LoginTextWatcher(binding.txtPassword));
         presenter = new LoginPresenter(this);
 
     }
@@ -62,7 +71,6 @@ public class LoginActivity extends AppCompatActivity implements  LoginContract.V
     @Override
     public void setPasswordError()
     {
-        //Todo moificar error
         binding.txtPassword.setError(getString(R.string.errorPasswordInvalid));
     }
 
@@ -70,11 +78,26 @@ public class LoginActivity extends AppCompatActivity implements  LoginContract.V
 
     @Override
     public void onSuccess(String msg) {
-        startActivity(new Intent(this, MainActivity.class));
+        if (msg.equals(TipoSuccesAndFails.INICIO_SESION)) {
+            startActivity(new Intent(this, MainActivity.class));
+        }
     }
 
     @Override
     public void onFail(String msg) {
+        if (msg.equals(TipoSuccesAndFails.INICIO_SESION)) {
+
+        }
+        switch (msg)
+        {
+            case TipoSuccesAndFails.INICIO_SESION:
+                Toast.makeText(getApplicationContext(),getString(R.string.errorLoginOnFail) , Toast.LENGTH_LONG).show();
+                break;
+            case TipoSuccesAndFails.PERDIDA_CONEXION:
+                //Todo agregar error
+                Toast.makeText(getApplicationContext(),getString(R.string.error) , Toast.LENGTH_LONG).show();
+                break;
+        }
 
     }
 
@@ -90,4 +113,66 @@ public class LoginActivity extends AppCompatActivity implements  LoginContract.V
         binding.pbLogin.setVisibility(View.INVISIBLE);
     }
     //endregion
+    class LoginTextWatcher implements TextWatcher
+    {
+        View view;
+        public LoginTextWatcher(View view)
+        {
+            super();
+            this.view = view;
+        }
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+            switch (view.getId())
+            {
+                case R.id.txtEmail:
+                    validateEmail(((EditText)view).getText().toString());
+                    break;
+                case R.id.txtPassword:
+                    validatePassword(((EditText)view).getText().toString());
+                    break;
+
+            }
+        }
+        void validateEmail(String email)
+        {
+            if (email.isEmpty())
+            {
+                binding.txtEmail.setError(getString(R.string.errorEmailEmpty));
+                return;
+            }
+            if (!CommonUtils.isEmailValid(email))
+            {
+                binding.txtEmail.setError(getString(R.string.errorEmailInvalid));
+                return;
+            }
+            binding.txtEmail.setError(null);
+        }
+        void validatePassword(String password)
+        {
+            if (password.isEmpty())
+            {
+                binding.txtPassword.setError(getString(R.string.errorPasswordEmpty));
+                return;
+            }
+            if (!CommonUtils.isPasswordValid(password))
+            {
+                binding.txtPassword.setError(getString(R.string.errorPasswordInvalid));
+                return;
+            }
+            binding.txtEmail.setError(null);
+        }
+
+
+    }
 }

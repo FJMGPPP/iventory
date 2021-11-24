@@ -21,14 +21,14 @@ public interface LoginContract
 
         void hideProgressBar();
     }
-    interface LoginInteractor extends OnLoginListener
+    interface OnIteratorListener extends  OnLoginListener
     {
         void onEmailEmptyError();
         void onPasswordEmptyError();
         void onEmailError();
         void onPasswordError();
     }
-    interface Presenter
+    interface Presenter extends  OnLoginListener
     {
         void validateCredentials(User user);
     }
@@ -41,5 +41,6 @@ public interface LoginContract
     {
         void login(User user);
     }
+
 }
 

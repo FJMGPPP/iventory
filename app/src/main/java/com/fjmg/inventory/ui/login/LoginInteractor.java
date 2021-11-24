@@ -3,17 +3,15 @@ package com.fjmg.inventory.ui.login;
 import android.os.Handler;
 import android.text.TextUtils;
 
+import com.fjmg.inventory.data.RepositoryFirebase;
 import com.fjmg.inventory.data.model.User;
 import com.fjmg.inventory.utils.CommonUtils;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-public class LoginInteractorImpl
+public class LoginInteractor implements LoginContract.OnLoginListener
 {
-    private LoginContract.Repository repository;
-    private LoginContract.LoginInteractor listener;
 
+    private LoginContract.OnIteratorListener listener;
+    private LoginContract.Repository repository = RepositoryFirebase.getInstance(this);
     public void validateCredentials(User user)
     {
         new Handler().postDelayed(new Runnable() {
@@ -51,15 +49,18 @@ public class LoginInteractorImpl
                         listener.onPasswordError();
                         return;
                     }
-                    //Todo Iniciar Instancia
-                    repository.get
-                    listener.onSuccess("fin");
                     repository.login(user);
             }
         },2000);
     }
-    public LoginInteractorImpl(LoginContract.LoginInteractor listener)
+    public LoginInteractor(LoginContract.OnIteratorListener listener)
     {
-       this.listener =  listener;
+        this.listener =  listener;
     }
+
+    @Override
+    public void onSuccess(String msg) { this.listener.onSuccess(msg);}
+
+    @Override
+    public void onFail(String msg) { listener.onFail(msg); }
 }

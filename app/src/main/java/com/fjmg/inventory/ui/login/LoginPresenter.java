@@ -2,13 +2,13 @@ package com.fjmg.inventory.ui.login;
 
 import com.fjmg.inventory.data.model.User;
 
-public class LoginPresenter implements LoginContract.Presenter , LoginContract.LoginInteractor
+public class LoginPresenter implements LoginContract.Presenter , LoginContract.OnIteratorListener
 {
     private LoginContract.View view;
-    private LoginInteractorImpl interactor;
+    private LoginInteractor interactor;
     public LoginPresenter(LoginContract.View view)
     {
-        this.interactor = new LoginInteractorImpl(this);
+        this.interactor = new LoginInteractor(this);
         this.view = view;
     }
     //Region interactor;
@@ -47,12 +47,14 @@ public class LoginPresenter implements LoginContract.Presenter , LoginContract.L
 
     @Override
     public void onSuccess(String msg) {
-        view.onSuccess("Fin");
+        view.hideProgressBar();
+        view.onSuccess(msg);
     }
 
     @Override
     public void onFail(String msg) {
-
+        view.hideProgressBar();
+        view.onFail(msg);
     }
     //endregion
 }

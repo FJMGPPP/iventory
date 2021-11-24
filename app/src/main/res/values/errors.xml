@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="errorEmailEmpty">Error email vacio</string>
-    <string name="errorEmailInvalid">Error email invalido</string>
-    <string name="errorPasswordInvalid">Error Password invalido</string>
-    <string name="errorPasswordEmpty">Error password vacio</string>
+    <string name="errorEmailInvalid">El correo no cumple los requisitos</string>
+    <string name="errorPasswordInvalid">La contraseña no cumple los requisitos</string>
+    <string name="errorPasswordEmpty">Error contraseña vacia</string>
+    <string name="errorLoginOnFail">usuario invalido o contraseña invalida</string>
+    <string name="errorPasswordNoCoindice">La contraseña no coincide</string>
+    <string name="errorUsuarioEmpty">Usuario vacio</string>
 </resources>

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "851192641782",
+    "project_id": "inventory-francisco",
+    "storage_bucket": "inventory-francisco.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:851192641782:android:ba173ea7c814f49b6614d7",
+        "android_client_info": {
+          "package_name": "com.fjmg.inventory"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "851192641782-5hta9rk9af1uh8ihgql45lhldq5nomh5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCog7j5bfr1i59cqp49kVoI7Nt7_TXqI30"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "851192641782-5hta9rk9af1uh8ihgql45lhldq5nomh5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
