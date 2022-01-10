@@ -1,29 +1,37 @@
 package com.fjmg.inventory.data;
 
 import android.util.Log;
-import android.widget.Toast;
 
+import com.fjmg.inventory.base.OnRepositoryCallback;
 import com.fjmg.inventory.data.model.TipoSuccesAndFails;
 import com.fjmg.inventory.data.model.User;
 import com.fjmg.inventory.ui.Register.RegisterContract;
+import com.fjmg.inventory.ui.login.Event;
 import com.fjmg.inventory.ui.login.LoginContract;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+
 import java.util.ArrayList;
 
 public class RepositoryFirebase implements LoginContract.Repository , RegisterContract.Repository
 {
-    private LoginContract.OnLoginListener loginListener;
-    private RegisterContract.Bus registerListener;
+    private OnRepositoryCallback callback;
     private  static RepositoryFirebase instance;
-    private ArrayList<User> users;
-    private RepositoryFirebase()
-    {
-        users = new ArrayList<>();
-    }
 
+
+    public RepositoryFirebase() {
+       registerEvent();
+    }
+    @Subscribe
+    public void registerEvent()
+        {
+            EventBus.getDefault().register(this);
+        }
+    @Subscribe
     @Override
     public void login(User user)
     {
@@ -35,15 +43,19 @@ public class RepositoryFirebase implements LoginContract.Repository , RegisterCo
                     if (task.isSuccessful()) {
                         // Sign in success, update UI with the signed-in user's information
                         Log.d(TAG, "signInWithEmail:success");
-                        loginListener.onSuccess(TipoSuccesAndFails.INICIO_SESION);
+                        callback.onSuccess(TipoSuccesAndFails.INICIO_SESION);
                     }
                     else
                         {
-                            loginListener.onFail(TipoSuccesAndFails.INICIO_SESION);
+                            Event ErrorEvent = new Event();
+                            ErrorEvent.setType(Event.TypesErrorEvents.INICIO_SESION_FAIL);
+                            ErrorEvent.setMessage(TipoSuccesAndFails.INICIO_SESION);
+                            EventBus.getDefault().post(ErrorEvent);
+                            //callback.onFail(TipoSuccesAndFails.INICIO_SESION);
                         }
                 });
     }
-
+    @Subscribe
     @Override
     public void Register(User user)
     {
@@ -54,32 +66,22 @@ public class RepositoryFirebase implements LoginContract.Repository , RegisterCo
                     if (task.isSuccessful()) {
                         // Sign in success, update UI with the signed-in user's information
                         Log.d(TAG, "RegisterWithEmail:success");
-                        registerListener.onSucces(TipoSuccesAndFails.CUENTA_CREADA);
+                        callback.onSuccess(TipoSuccesAndFails.CUENTA_CREADA);
                     }
                     else
                     {
-                        registerListener.onFail(TipoSuccesAndFails.EMAIL_EXISTENTE);
+                        callback.onFailure(TipoSuccesAndFails.USUARIO_EXISTENTE);
                     }
                 });
     }
 
-    public static RepositoryFirebase getInstance(LoginContract.OnLoginListener listener)
+    public static RepositoryFirebase getInstance(OnRepositoryCallback callback)
     {
         if (instance == null)
         {
             instance = new RepositoryFirebase();
         }
-        instance.loginListener = listener;
-        return  instance;
-
-    }
-    public static RepositoryFirebase getInstance(RegisterContract.Bus listener)
-    {
-        if (instance == null)
-        {
-            instance = new RepositoryFirebase();
-        }
-        instance.registerListener = listener;
+        instance.callback = callback;
         return  instance;
 
     }

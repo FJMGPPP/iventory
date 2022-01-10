@@ -7,6 +7,14 @@
 
     <!-- Si se usa la etiqueta src en vez de SrcCompat coge el color secundario del tema -->
     <!-- si es srcCompat debe modificar desde el tint -->
+
+    <ImageView
+        android:id="@+id/AlertDepedencyData"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible"
+        app:srcCompat="@drawable/ic_alert_no_data_depedency" />
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton"
         android:layout_width="wrap_content"
@@ -16,14 +24,21 @@
         app:srcCompat="@drawable/ic_plus_button"
         tools:ignore="SpeakableTextPresentCheck"
         android:contentDescription="@string/fab_contentDescription"
-        android:layout_gravity="bottom|right"
+        android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margines"/>
+
+    <include
+        android:id="@+id/progress_circular_dependency"
+        layout="@layout/layout_progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvDependency"
         android:layout_width="359dp"
         android:layout_height="525dp"
         android:layout_gravity="center">
-
     </androidx.recyclerview.widget.RecyclerView>
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

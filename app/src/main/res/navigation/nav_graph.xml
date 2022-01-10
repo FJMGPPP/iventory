@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_dashBoardFragment_to_dependencyFragment"
             app:destination="@id/dependencyFragment" />
+        <action
+            android:id="@+id/action_dashBoardFragment_to_preferenceFragment"
+            app:destination="@id/preferenceFragment" />
     </fragment>
     <fragment
         android:id="@+id/aboutUsFragment"
@@ -31,5 +34,32 @@
     <fragment
         android:id="@+id/dependencyFragment"
         android:name="com.fjmg.inventory.ui.dependency.DependencyFragment"
-        android:label="DependencyFragment" />
+        android:label="DependencyFragment" >
+        <action
+            android:id="@+id/action_dependencyFragment_to_baseDialogFragment"
+            app:destination="@id/baseDialogFragment" />
+        <action
+            android:id="@+id/action_dependencyFragment_to_formDepedencyFragment"
+            app:destination="@id/formDepedencyFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/baseDialogFragment"
+        android:name="com.fjmg.inventory.base.BaseDialogFragment"
+        android:label="BaseDialogFragment" />
+    <fragment
+        android:id="@+id/formDepedencyFragment"
+        android:name="com.fjmg.inventory.ui.dependency.FormDepedencyFragment"
+        android:label="FormDepedencyFragment" />
+    <fragment
+        android:id="@+id/preferenceFragment"
+        android:name="com.fjmg.inventory.ui.preferences.PreferenceFragment"
+        android:label="PreferenceFragment" >
+        <action
+            android:id="@+id/action_preferenceFragment_to_accountsFragment"
+            app:destination="@id/accountsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/accountsFragment"
+        android:name="com.fjmg.inventory.ui.preferences.AccountsFragment"
+        android:label="AccountsFragment" />
 </navigation>

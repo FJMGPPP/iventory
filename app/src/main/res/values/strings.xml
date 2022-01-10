@@ -44,6 +44,7 @@
     <string name="fechaFin">Fecha de Fin</string>
     <string name="fechaActivo">Fecha de Activo</string>
     <string name="ModficarInventario">Modificar Inventario</string>
+    <string name="ok">Okey</string>
     <string name="Okey">Okey</string>
     <string name="fab_contentDescription">un boton flotante para añadir</string>
     <string name="Nombre">Nombre</string>
@@ -53,4 +54,32 @@
     <string name="SettingsMenu">Ajustes</string>
     <string name="action_order_dependecy">ordenar</string>
     <string name="errorUsuarioInvalido">usuario invalido</string>
+    <string name="title_delete_dependency">Eliminar Depedencia</string>
+    <string name="message_delete_dependency">¿Seguro quieres eliminar %1$s?</string>
+    <string name="name_channel">InventoryNotifactionChannel</string>
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sincronizar depedecias periodicamente</string>
+    <string name="attachment_title">descargar imagenes de la depedencia</string>
+    <string name="attachment_summary_on">Descargando imagenes
+    </string>
+    <string name="attachment_summary_off">No se descarga imagenes</string>
+    <string name="dependency_header">Dependencias</string>
+    <string name="help_category">Ayuda</string>
+    <string name="help_point">nuestra web</string>
+    <string name="notification_header">Notificaciones</string>
+    <string name="notifaction">notificacion</string>
+    <string name="ringtone">tono</string>
+    <string name="rigtone_notifacation">tono para las notifiaciones</string>
+    <string name="key_accounts">acount</string>
+    <string name="editUser">Cambiar correo del usuario</string>
+    <string name="key_rigtone">rigtone</string>
+    <string name="key_help_point">help</string>
 </resources>

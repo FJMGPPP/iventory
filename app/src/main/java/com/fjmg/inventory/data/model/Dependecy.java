@@ -1,7 +1,10 @@
 package com.fjmg.inventory.data.model;
 
-public class Dependecy
+import java.io.Serializable;
+
+public class Dependecy implements Comparable , Serializable
 {
+    public static final  String TAG = "Depedency";
     private String name;
     private String shortname;
     private String description;
@@ -44,5 +47,15 @@ public class Dependecy
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        Dependecy comp = (Dependecy) o;
+        if (comp.name.compareTo(name) == 0)
+        {
+            return  comp.compareTo(description);
+        };
+        return comp.name.compareTo(name) ;
     }
 }

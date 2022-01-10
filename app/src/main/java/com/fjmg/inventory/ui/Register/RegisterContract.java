@@ -1,18 +1,14 @@
 package com.fjmg.inventory.ui.Register;
 
+import com.fjmg.inventory.base.BasePresenter;
+import com.fjmg.inventory.base.OnRepositoryCallback;
 import com.fjmg.inventory.data.model.User;
+import com.fjmg.inventory.ui.login.LoginContract;
 
 public interface RegisterContract
 {
-        interface View extends Bus
+        interface View extends LoginContract.View,OnRepositoryCallback
         {
-            void setEmailEmptyError();
-
-            void setEmailError();
-
-            void setPasswordEmptyError();
-
-            void setPasswordError();
 
             void setMessageDontMatch();
 
@@ -22,7 +18,7 @@ public interface RegisterContract
 
 
         }
-        interface Presenter extends Bus
+        interface Presenter extends OnRepositoryCallback, BasePresenter
         {
             void onEmailEmptyError();
 
@@ -41,7 +37,7 @@ public interface RegisterContract
             void validarSignUp(User user);
 
         }
-        interface Iteractor extends Bus
+        interface Iteractor extends OnRepositoryCallback
         {
             void validarSignUp(User user);
         }
@@ -50,9 +46,4 @@ public interface RegisterContract
            void Register(User user);
         }
 
-        interface Bus
-        {
-            void onSucces(String msg);
-            void onFail(String msg);
-        }
 }

@@ -1,5 +1,6 @@
 package com.fjmg.inventory.data;
 
+import com.fjmg.inventory.base.OnRepositoryCallback;
 import com.fjmg.inventory.data.model.TipoSuccesAndFails;
 import com.fjmg.inventory.data.model.User;
 import com.fjmg.inventory.ui.Register.RegisterContract;
@@ -9,8 +10,7 @@ import java.util.ArrayList;
 
 public class RepositoryStatic implements LoginContract.Repository , RegisterContract.Repository
 {
-    private LoginContract.OnLoginListener loginListener;
-    private RegisterContract.Bus registerListener;
+    private OnRepositoryCallback callback;
     private  static RepositoryStatic instance;
     private ArrayList<User> users;
     private RepositoryStatic()
@@ -35,32 +35,23 @@ public class RepositoryStatic implements LoginContract.Repository , RegisterCont
         {
             if (user.getEmail().equals(userMemory.getEmail()) && user.getPassword().equals(userMemory.getPassword()))
             {
-                loginListener.onSuccess(TipoSuccesAndFails.INICIO_SESION);
+                callback.onSuccess(TipoSuccesAndFails.INICIO_SESION);
                 return;
             }
         }
-        loginListener.onFail(TipoSuccesAndFails.INICIO_SESION);
+        callback.onFailure(TipoSuccesAndFails.INICIO_SESION);
     }
-    public static RepositoryStatic getInstance(LoginContract.OnLoginListener listener)
+    public static RepositoryStatic getInstance(OnRepositoryCallback listener)
     {
         if (instance == null)
         {
             instance = new RepositoryStatic();
         }
-        instance.loginListener = listener;
+        instance.callback = listener;
         return  instance;
 
     }
-    public static RepositoryStatic getInstance(RegisterContract.Bus listener)
-    {
-        if (instance == null)
-        {
-            instance = new RepositoryStatic();
-        }
-        instance.registerListener = listener;
-        return  instance;
 
-    }
 
     @Override
     public void Register(User user) {
@@ -68,16 +59,16 @@ public class RepositoryStatic implements LoginContract.Repository , RegisterCont
         {
             if (user.getEmail().equals(userMemory.getEmail()))
             {
-                registerListener.onFail(TipoSuccesAndFails.EMAIL_EXISTENTE);
+                callback.onFailure(TipoSuccesAndFails.EMAIL_EXISTENTE);
                 return;
             }
             if (user.getUsername().equals(userMemory.getUsername()))
             {
-                registerListener.onFail(TipoSuccesAndFails.USUARIO_EXISTENTE);
+                callback.onFailure(TipoSuccesAndFails.USUARIO_EXISTENTE);
                 return;
             }
         }
         users.add(user);
-        registerListener.onSucces(TipoSuccesAndFails.CUENTA_CREADA);
+        callback.onSuccess(TipoSuccesAndFails.CUENTA_CREADA);
     }
 }

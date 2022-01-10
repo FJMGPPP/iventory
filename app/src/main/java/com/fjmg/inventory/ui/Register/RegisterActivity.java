@@ -16,6 +16,7 @@ import com.fjmg.inventory.data.model.User;
 import com.fjmg.inventory.databinding.ActivityLoginBinding;
 import com.fjmg.inventory.databinding.ActivityRegisterBinding;
 import com.fjmg.inventory.ui.MainActivity;
+import com.fjmg.inventory.ui.login.Event;
 import com.fjmg.inventory.ui.login.LoginActivity;
 import com.fjmg.inventory.utils.CommonUtils;
 
@@ -44,6 +45,11 @@ public class RegisterActivity extends AppCompatActivity implements RegisterContr
             );
             registerPresenter.validarSignUp(usuario);
         });
+    }
+
+    @Override
+    public void onEvent(Event event) {
+
     }
 
     @Override
@@ -84,15 +90,26 @@ public class RegisterActivity extends AppCompatActivity implements RegisterContr
 
 
     @Override
-    public void onSucces(String msg) {
+    public void onSuccess(String msg) {
             Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
             startActivity(new Intent(this, LoginActivity.class));
     }
 
     @Override
-    public void onFail(String msg) {
+    public void onFailure(String msg) {
             Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
     }
+
+    @Override
+    public void hideProgress() {
+
+    }
+
+    @Override
+    public void showProgress() {
+
+    }
+
     class RegisterTextWatcher implements TextWatcher
     {
         View view;
@@ -179,12 +196,12 @@ public class RegisterActivity extends AppCompatActivity implements RegisterContr
                 binding.txtUserName.setError(getString(R.string.errorUsuarioEmpty));
                 return;
             }
-            if (CommonUtils.isUsernameValid(username))
+            if (!CommonUtils.isUsernameValid(username))
             {
-                binding.txtPassword.setError(getString(R.string.errorUsuarioInvalido));
+                binding.txtUserName.setError(getString(R.string.errorUsuarioInvalido));
                 return;
             }
-            binding.txtEmail.setError(null);
+            binding.txtUserName.setError(null);
         }
     }
 

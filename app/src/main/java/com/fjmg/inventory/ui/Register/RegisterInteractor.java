@@ -66,12 +66,12 @@ public class RegisterInteractor implements RegisterContract.Iteractor {
     }
 
     @Override
-    public void onSucces(String msg) {
-        registerPresenter.onSucces(msg);
+    public void onSuccess(String msg) {
+        registerPresenter.onSuccess(msg);
     }
 
     @Override
-    public void onFail(String msg) {
-        registerPresenter.onFail(msg);
+    public void onFailure(String msg) {
+        registerPresenter.onFailure(msg);
     }
 }

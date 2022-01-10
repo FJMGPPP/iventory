@@ -3,11 +3,12 @@ package com.fjmg.inventory.ui.login;
 import android.os.Handler;
 import android.text.TextUtils;
 
+import com.fjmg.inventory.base.OnRepositoryCallback;
 import com.fjmg.inventory.data.RepositoryFirebase;
 import com.fjmg.inventory.data.model.User;
 import com.fjmg.inventory.utils.CommonUtils;
 
-public class LoginInteractor implements LoginContract.OnLoginListener
+public class LoginInteractor implements OnRepositoryCallback
 {
 
     private LoginContract.OnIteratorListener listener;
@@ -59,8 +60,10 @@ public class LoginInteractor implements LoginContract.OnLoginListener
     }
 
     @Override
-    public void onSuccess(String msg) { this.listener.onSuccess(msg);}
+    public void onSuccess(String msg) {
+        this.listener.onSuccess(msg);
+    }
 
     @Override
-    public void onFail(String msg) { listener.onFail(msg); }
+    public void onFailure(String msg) { listener.onFailure(msg); }
 }

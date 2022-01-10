@@ -51,12 +51,18 @@ public class RegisterPresenter implements RegisterContract.Presenter
     }
 
     @Override
-    public void onSucces(String msg) {
-        view.onSucces(msg);
+    public void onSuccess(String msg) {
+        view.onSuccess(msg);
     }
 
     @Override
-    public void onFail(String msg) {
-        view.onFail(msg);
+    public void onFailure(String msg) {
+        view.onFailure(msg);
+    }
+
+    @Override
+    public void OnDestroy() {
+        view = null;
+        iteractor = null;
     }
 }

@@ -17,44 +17,50 @@ public class LoginPresenter implements LoginContract.Presenter , LoginContract.O
     public void validateCredentials(User user)
     {
         interactor.validateCredentials(user);
-        view.showProgressBar();
+        view.showProgress();
     }
 
     @Override
     public void onEmailEmptyError() {
-        view.hideProgressBar();
+        view.showProgress();
         view.setEmailEmptyError();
     }
 
     @Override
     public void onPasswordEmptyError() {
-        view.hideProgressBar();
+        view.showProgress();
         view.setPasswordEmptyError();
     }
 
     @Override
     public void onEmailError() {
-        view.hideProgressBar();
+        view.showProgress();
         view.setEmailError();
     }
 
     @Override
     public void onPasswordError() {
-        view.hideProgressBar();
+        view.hideProgress();
         view.setPasswordError();
     }
 
 
     @Override
     public void onSuccess(String msg) {
-        view.hideProgressBar();
+        view.hideProgress();
         view.onSuccess(msg);
     }
 
     @Override
-    public void onFail(String msg) {
-        view.hideProgressBar();
-        view.onFail(msg);
+    public void onFailure(String msg) {
+        view.hideProgress();
+        view.onFailure(msg);
+    }
+
+    @Override
+    public void OnDestroy() {
+        this.view = null;
+        this.interactor = null;
     }
     //endregion
 }

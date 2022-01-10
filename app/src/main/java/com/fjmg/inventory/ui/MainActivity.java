@@ -8,13 +8,18 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceFragmentCompat;
 
 import com.fjmg.inventory.R;
 import com.fjmg.inventory.databinding.ActivityMainBinding;
 
-public class MainActivity extends AppCompatActivity
+public class MainActivity extends AppCompatActivity implements PreferenceFragmentCompat.OnPreferenceStartFragmentCallback
 {
+
     ActivityMainBinding binding;
 
     @Override
@@ -42,11 +47,16 @@ public class MainActivity extends AppCompatActivity
             case R.id.action_setting_menu:
                 Toast.makeText(this,"se ha pulsado Settings",Toast.LENGTH_SHORT).show();
                 break;
-            default:
-                //Si los fragmentos modifican el menu de la activity se devuelve false
-                //return super.onOptionsItemSelected(item);
-                break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onPreferenceStartFragment(PreferenceFragmentCompat caller, Preference pref) {
+        NavController navController = Navigation.findNavController(MainActivity.this,R.id.nav_host_fragment_main);
+        if(pref.getKey().equals(getString(R.string.key_accounts))) {
+            navController.navigate(R.id.action_preferenceFragment_to_accountsFragment);
+        }
+        return true;
     }
 }

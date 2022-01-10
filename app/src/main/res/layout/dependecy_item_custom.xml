@@ -23,8 +23,8 @@
     <TextView
         android:id="@+id/tvShortname"
         style="@style/textoNewakeDefault"
-        android:layout_width="0dp"
-        android:layout_height="36dp"
+        android:layout_width="94dp"
+        android:layout_height="20dp"
         android:layout_margin="20dp"
         android:layout_marginStart="16dp"
         android:text="TextView"
@@ -34,8 +34,8 @@
     <EditText
         android:id="@+id/etmDescription"
         style="@style/textoNewakeDefault"
-        android:layout_width="0dp"
-        android:layout_height="84dp"
+        android:layout_width="154dp"
+        android:layout_height="46dp"
         android:layout_marginStart="16dp"
         android:ems="10"
         android:gravity="start|top"
@@ -85,4 +85,29 @@
         tools:layout_editor_absoluteX="118dp"
         tools:layout_editor_absoluteY="20dp" />
 
+    <Button
+        android:id="@+id/Eliminar"
+        android:layout_width="115dp"
+        android:layout_height="37dp"
+        android:text="Eliminar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.398"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_view"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/image_view"
+        android:layout_width="37dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblDescripcion" />
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+

@@ -18,18 +18,23 @@
         <entry key="..\:/Users/Francisco/AndroidStudioProjects/Inventory2/app/src/main/res/layout/activity_register.xml" value="0.2" />
         <entry key="..\:/Users/Francisco/AndroidStudioProjects/Inventory2/app/src/main/res/layout/activity_splash.xml" value="0.1" />
         <entry key="..\:/Users/Francisco/AndroidStudioProjects/Inventory2/app/src/main/res/layout/content_main.xml" value="0.12" />
-        <entry key="..\:/Users/Francisco/AndroidStudioProjects/Inventory2/app/src/main/res/layout/dependecy_item_custom.xml" value="0.176" />
+        <entry key="..\:/Users/Francisco/AndroidStudioProjects/Inventory2/app/src/main/res/layout/dependecy_item_custom.xml" value="0.4" />
         <entry key="..\:/Users/Francisco/AndroidStudioProjects/Inventory2/app/src/main/res/layout/dependecy_item_delete.xml" value="0.128" />
         <entry key="..\:/Users/Francisco/AndroidStudioProjects/Inventory2/app/src/main/res/layout/dependency_item.xml" value="0.1" />
         <entry key="..\:/Users/Francisco/AndroidStudioProjects/Inventory2/app/src/main/res/layout/fragment_dash_board.xml" value="0.1" />
-        <entry key="..\:/Users/Francisco/AndroidStudioProjects/Inventory2/app/src/main/res/layout/fragment_dependency.xml" value="0.1" />
+        <entry key="..\:/Users/Francisco/AndroidStudioProjects/Inventory2/app/src/main/res/layout/fragment_dependency.xml" value="0.264" />
+        <entry key="..\:/Users/Francisco/AndroidStudioProjects/Inventory2/app/src/main/res/layout/fragment_form_dependency.xml" value="0.1" />
         <entry key="..\:/Users/Francisco/AndroidStudioProjects/Inventory2/app/src/main/res/layout/fragment_inventory.xml" value="0.264" />
+        <entry key="..\:/Users/Francisco/AndroidStudioProjects/Inventory2/app/src/main/res/layout/layout_progress_ba.xml" value="0.1" />
+        <entry key="..\:/Users/Francisco/AndroidStudioProjects/Inventory2/app/src/main/res/layout/layout_progress_bar.xml" value="0.1" />
         <entry key="..\:/Users/Francisco/AndroidStudioProjects/Inventory2/app/src/main/res/layout/nav_header_main.xml" value="0.1014344262295082" />
         <entry key="..\:/Users/Francisco/AndroidStudioProjects/Inventory2/app/src/main/res/menu/activity_main_drawer.xml" value="0.4" />
         <entry key="..\:/Users/Francisco/AndroidStudioProjects/Inventory2/app/src/main/res/menu/activity_menu.xml" value="0.1" />
         <entry key="..\:/Users/Francisco/AndroidStudioProjects/Inventory2/app/src/main/res/menu/fragmentlist_menu.xml" value="0.1" />
         <entry key="..\:/Users/Francisco/AndroidStudioProjects/Inventory2/app/src/main/res/menu/main.xml" value="0.1" />
         <entry key="..\:/Users/Francisco/AndroidStudioProjects/Inventory2/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.14635416666666667" />
+        <entry key="..\:/Users/Francisco/AndroidStudioProjects/Inventory2/app/src/main/res/xml/account_preferences.xml" value="0.1" />
+        <entry key="..\:/Users/Francisco/AndroidStudioProjects/Inventory2/app/src/main/res/xml/root_preferences.xml" value="0.176" />
       </map>
     </option>
   </component>

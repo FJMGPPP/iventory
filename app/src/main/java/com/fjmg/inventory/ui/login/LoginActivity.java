@@ -1,10 +1,14 @@
 package com.fjmg.inventory.ui.login;
 
+import android.app.usage.UsageEvents;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.preference.PreferenceActivity;
+import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -19,11 +23,17 @@ import com.fjmg.inventory.ui.MainActivity;
 import com.fjmg.inventory.ui.Register.RegisterActivity;
 import com.fjmg.inventory.utils.CommonUtils;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
+
 public class LoginActivity extends AppCompatActivity implements  LoginContract.View{
 
     private ActivityLoginBinding binding;
     //Al ser una vista solo podemos acceder a los metodos de la vista
     private LoginContract.Presenter presenter;
+    @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,51 +53,84 @@ public class LoginActivity extends AppCompatActivity implements  LoginContract.V
         binding.txtEmail.addTextChangedListener(new LoginTextWatcher(binding.txtEmail));
         binding.txtPassword.addTextChangedListener(new LoginTextWatcher(binding.txtPassword));
         presenter = new LoginPresenter(this);
-
+        EventBus.getDefault().register(this);
+        if (isSesionStart())
+        {
+            startApp();
+        }
     }
-    //metodos del contrato presenter
-    //region
+
+    private boolean isSesionStart()
+    {
+        return  true;
+    }
+
+    @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
+    @Override
+    public void onEvent(Event event)
+    {
+        hideProgress();
+        onFailure(event.getMessage());
+    }
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        presenter.OnDestroy();
         presenter = null;
+        EventBus.getDefault().unregister(this);
     }
+    //metodos del contrato presenter
+    //region
+
 
     @Override
     public void setEmailEmptyError() {
+        hideProgress();
         binding.txtEmail.setError(getString(R.string.errorEmailEmpty));
     }
 
     @Override
     public void setPasswordEmptyError() {
+        hideProgress();
         binding.txtPassword.setError(getString(R.string.errorPasswordEmpty));
     }
 
     @Override
     public void setEmailError() {
+        hideProgress();
         binding.txtEmail.setError(getString(R.string.errorEmailInvalid));
     }
 
     @Override
     public void setPasswordError()
     {
+        hideProgress();
         binding.txtPassword.setError(getString(R.string.errorPasswordInvalid));
     }
-
 
 
     @Override
     public void onSuccess(String msg) {
         if (msg.equals(TipoSuccesAndFails.INICIO_SESION)) {
-            startActivity(new Intent(this, MainActivity.class));
+            addLogin();
+            startApp();
         }
     }
 
-    @Override
-    public void onFail(String msg) {
-        if (msg.equals(TipoSuccesAndFails.INICIO_SESION)) {
+    private void addLogin()
+    {
+        SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(this).edit();
+        editor.putString(User.TAG,binding.txtEmail.getText().toString());
+        editor.apply();
 
-        }
+    }
+    private void startApp()
+    {
+        startActivity(new Intent(this, MainActivity.class));
+    }
+    @Override
+    public void onFailure(String msg) {
+        hideProgress();
         switch (msg)
         {
             case TipoSuccesAndFails.INICIO_SESION:
@@ -100,17 +143,16 @@ public class LoginActivity extends AppCompatActivity implements  LoginContract.V
 
     }
 
-
     @Override
-    public void showProgressBar() {
-    binding.pbLogin.setVisibility(View.VISIBLE);
-
-    }
-
-    @Override
-    public void hideProgressBar() {
+    public void hideProgress() {
         binding.pbLogin.setVisibility(View.INVISIBLE);
     }
+
+    @Override
+    public void showProgress() {
+        binding.pbLogin.setVisibility(View.VISIBLE);
+    }
+
     //endregion
     class LoginTextWatcher implements TextWatcher
     {

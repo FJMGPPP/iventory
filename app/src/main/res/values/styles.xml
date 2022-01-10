@@ -13,6 +13,11 @@
         <item name="android:textSize">52sp</item>
         <item name="android:textAlignment">center</item>
     </style>
+    <style name="TitulosReducidosAumentados" parent="Titulos">
+        <item name="android:fontFamily">@font/newake</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textAlignment">center</item>
+    </style>
     <style name="TitulosReducidos" parent="Titulos">
         <item name="android:fontFamily">@font/newake</item>
         <item name="android:textSize">24sp</item>

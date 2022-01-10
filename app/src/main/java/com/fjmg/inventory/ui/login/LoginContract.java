@@ -1,11 +1,16 @@
 package com.fjmg.inventory.ui.login;
 
+import com.fjmg.inventory.base.BasePresenter;
+import com.fjmg.inventory.base.IProgressView;
+import com.fjmg.inventory.base.OnRepositoryCallback;
 import com.fjmg.inventory.data.model.User;
 
 public interface LoginContract
 {
-    interface View extends OnLoginListener
+    interface View extends OnRepositoryCallback , IProgressView
     {
+        void onEvent(Event event);
+
         /**
          * Alternativas del caso de uso. set porque se modifica elementos de la vista
          */
@@ -16,27 +21,19 @@ public interface LoginContract
         void setEmailError();
 
         void setPasswordError();
-
-        void showProgressBar();
-
-        void hideProgressBar();
     }
-    interface OnIteratorListener extends  OnLoginListener
+    interface OnIteratorListener extends  OnRepositoryCallback
     {
         void onEmailEmptyError();
         void onPasswordEmptyError();
         void onEmailError();
         void onPasswordError();
     }
-    interface Presenter extends  OnLoginListener
+    interface Presenter extends  OnRepositoryCallback , BasePresenter
     {
         void validateCredentials(User user);
     }
-    interface OnLoginListener
-    {
-        void onSuccess(String msg);
-        void onFail(String msg);
-    }
+
     interface Repository
     {
         void login(User user);

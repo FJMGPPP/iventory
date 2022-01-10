@@ -3,6 +3,7 @@ package com.fjmg.inventory.data.model;
 public class User
 {
 
+    public static final String TAG ="User" ;
     String email;
     String password;
     String matchPassword;
