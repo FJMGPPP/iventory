@@ -10,6 +10,9 @@ public final class CommonUtils
     static final String EMAIL_PATTERN = Patterns.EMAIL_ADDRESS.pattern();
     static final String PASSWORD_PATTERN = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])(?!.*\\s).{8,20}";
     static final String USER_PATTERN = "^[A-Za-z]\\w{1,29}$";
+    static final String DEPENDECY_SHORT_NAME_PATTERN = "^[a-zA-Z0-9]+$";
+
+
 
     public static boolean isPasswordValid(String password)
     {
@@ -28,5 +31,10 @@ public final class CommonUtils
         Pattern pattern = Pattern.compile(USER_PATTERN);
         Matcher matcher = pattern.matcher(username);
         return matcher.matches();
+    }
+    public static boolean isDependecyShortNameValid(String shortName) {
+        return Pattern.compile(DEPENDECY_SHORT_NAME_PATTERN)
+                .matcher(shortName)
+                .matches();
     }
 }

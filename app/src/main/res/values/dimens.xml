@@ -17,4 +17,5 @@
     <dimen name="fragment_inventory_gdlStart_begin">20dp</dimen>
     <dimen name="fab_elevation">6dp</dimen>
     <dimen name="fab_margines">20dp</dimen>
+    <dimen name="toolbr_elevetation">4dp</dimen>
 </resources>

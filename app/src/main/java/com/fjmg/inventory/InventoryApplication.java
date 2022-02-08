@@ -5,6 +5,8 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.os.Build;
 
+import com.fjmg.inventory.data.DataBase;
+
 import java.util.Arrays;
 
 public class InventoryApplication extends Application
@@ -15,6 +17,7 @@ public class InventoryApplication extends Application
     {
         super.onCreate();
         createNotificationChannel();
+        DataBase.create(this);
     }
     //Da fallo por debajo de la api 26
     private void createNotificationChannel()

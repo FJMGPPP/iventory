@@ -4,9 +4,9 @@ import com.fjmg.inventory.base.BasePresenter;
 import com.fjmg.inventory.base.IProgressView;
 import com.fjmg.inventory.base.OnRepositoryListCallback;
 import com.fjmg.inventory.data.model.Dependecy;
-import com.google.firebase.components.Dependency;
 
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 public interface DependencyListContract
 {
@@ -20,24 +20,21 @@ public interface DependencyListContract
     }
     interface Presenter extends BasePresenter
     {
-        void load();
+        void load() throws ExecutionException, InterruptedException;
         void delete(Dependecy depedency);
         void undo(Dependecy dependency);
-        void update(Dependecy dependency);
     }
     interface Repository
     {
-        void getList();
+        void getList() throws ExecutionException, InterruptedException;
         void delete(Dependecy dependency);
         void undo(Dependecy dependency);
-        void update(Dependecy dependency);
     }
     interface Interactor
     {
-        void load();
+        void load() throws ExecutionException, InterruptedException;
         void delete(Dependecy dependency);
         void undo(Dependecy dependency);
-        void update(Dependecy dependency);
     }
     interface onInteractorListener extends OnRepositoryListCallback
     {
@@ -45,6 +42,8 @@ public interface DependencyListContract
     }
     interface Adapter
     {
+        void update(ArrayList list);
+        void update(Dependecy dependency);
         void delete(Dependecy dependecy);
         void undo(Dependecy dependecy);
         void order();

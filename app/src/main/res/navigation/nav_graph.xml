@@ -3,26 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/dashBoardFragment">
+    app:startDestination="@id/dependencyFragment">
 
-    <fragment
-        android:id="@+id/dashBoardFragment"
-        android:name="com.fjmg.inventory.ui.Dashboard.DashBoardFragment"
-        android:label="fragment_dash_board"
-        tools:layout="@layout/fragment_dash_board" >
-        <action
-            android:id="@+id/action_dashBoardFragment_to_aboutUsFragment"
-            app:destination="@id/aboutUsFragment" />
-        <action
-            android:id="@+id/action_dashBoardFragment_to_inventoryFragment"
-            app:destination="@id/inventoryFragment" />
-        <action
-            android:id="@+id/action_dashBoardFragment_to_dependencyFragment"
-            app:destination="@id/dependencyFragment" />
-        <action
-            android:id="@+id/action_dashBoardFragment_to_preferenceFragment"
-            app:destination="@id/preferenceFragment" />
-    </fragment>
     <fragment
         android:id="@+id/aboutUsFragment"
         android:name="com.fjmg.inventory.ui.about.AboutUsFragment"
@@ -62,4 +44,24 @@
         android:id="@+id/accountsFragment"
         android:name="com.fjmg.inventory.ui.preferences.AccountsFragment"
         android:label="AccountsFragment" />
+    <fragment
+        android:id="@+id/productFragment"
+        android:name="com.fjmg.inventory.ui.products.ProductFragment"
+        android:label="ProductFragment" />
+    <fragment
+        android:id="@+id/sectionsFragmentMVP"
+        android:name="com.fjmg.inventory.ui.sections.SectionsMVP.SectionsFragmentMVP"
+        android:label="sectionsFragmentMVP">
+        <action
+            android:id="@+id/action_sectionsFragment_to_dependencyFragment"
+            app:destination="@id/dependencyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/sectionsFragment"
+        android:name="com.fjmg.inventory.ui.sections.SectionsFragment"
+        android:label="SectionsFragment" >
+        <action
+            android:id="@+id/action_sectionsFragment2_to_sectionsFragment"
+            app:destination="@id/sectionsFragmentMVP" />
+    </fragment>
 </navigation>

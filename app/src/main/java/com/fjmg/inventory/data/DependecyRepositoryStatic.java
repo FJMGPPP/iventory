@@ -4,30 +4,44 @@ import com.fjmg.inventory.base.DependencyOrdenator;
 import com.fjmg.inventory.base.OnRepositoryListCallback;
 import com.fjmg.inventory.data.model.Dependecy;
 import com.fjmg.inventory.ui.dependency.DependencyListContract;
+import com.fjmg.inventory.ui.dependency.FormDepedencyContract;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class DependeciesRepositoryStatic implements DependencyListContract.Repository
+public class DependecyRepositoryStatic implements DependencyListContract.Repository , FormDepedencyContract.Repository
 {
-    static DependeciesRepositoryStatic instance;
+    static DependecyRepositoryStatic instance;
     Dependecy deleted;
     OnRepositoryListCallback callback;
     ArrayList<Dependecy> dependecies;
-    DependeciesRepositoryStatic()
+    private FormDepedencyContract.Interactor interactor;
+
+    DependecyRepositoryStatic()
     {
         Init();
     }
-    public static DependeciesRepositoryStatic getInstance(OnRepositoryListCallback callback)
+    public static DependecyRepositoryStatic getInstance(OnRepositoryListCallback callback)
     {
         if (instance == null)
         {
-            instance = new DependeciesRepositoryStatic();
+            instance = new DependecyRepositoryStatic();
         }
         instance.callback = callback;
         return  instance;
 
     }
+
+    public static FormDepedencyContract.Repository getInstance(FormDepedencyContract.Interactor interactor)
+    {
+        if (instance == null)
+        {
+            instance = new DependecyRepositoryStatic();
+        }
+        instance.interactor = interactor;
+        return  instance;
+    }
+
     private void Init()
         {
             this.dependecies = new ArrayList<Dependecy>();
@@ -70,6 +84,34 @@ public class DependeciesRepositoryStatic implements DependencyListContract.Repos
         callback.onUndoSuccess("Se deshizo el cambio");
     }
 
+
+    @Override
+    public boolean existsName(String dependecyName) {
+        for (int i = 0; i < this.dependecies.size(); i++) {
+            if(this.dependecies.get(i).getName().equals(dependecyName))
+            {
+               return true;
+            }
+        }
+        return  false;
+    }
+
+    @Override
+    public boolean existsShortName(String dependecyShortName) {
+        for (int i = 0; i < this.dependecies.size(); i++) {
+            if(this.dependecies.get(i).getShortname().equals(dependecyShortName))
+            {
+                return true;
+            }
+        }
+        return  false;
+    }
+
+    @Override
+    public void add(Dependecy dependecy) {
+        dependecies.add(dependecy);
+        interactor.onSucess("Agregado");
+    }
     @Override
     public void update(Dependecy dependency) {
         for (int i = 0; i < this.dependecies.size(); i++) {
@@ -80,6 +122,6 @@ public class DependeciesRepositoryStatic implements DependencyListContract.Repos
             }
             Collections.sort(dependecies, new DependencyOrdenator());
         }
-        callback.onUpdateSuccess("Actualizado");
+        interactor.onSucess("Actualizado");
     }
 }

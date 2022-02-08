@@ -1,9 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item android:id="@+id/action_bar_icon" android:title="@string/action_settings" app:showAsAction="always"
-        android:icon="@drawable/ic_logo">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/inventoryFragment"
+            android:title="Inventory"
+            app:showAsAction="never" />
+        <item
+            android:id="@+id/dependencyFragment"
+            android:title="Dependencys"
+            app:showAsAction="never" />
+        <item
+            android:id="@+id/sectionsFragment"
+            android:title="Sections"
+            app:showAsAction="never" />
+        <item
+            android:id="@+id/productFragment"
+            android:title="Products"
+            app:showAsAction="never" />
+
+    </group>
+
+    <item android:title="Options">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/aboutUsFragment"
+                    android:title="@string/AboutAsMenu"
+                    app:showAsAction="never" />
+                <item
+                    android:id="@+id/preferenceFragment"
+                    android:title="@string/SettingsMenu"
+                    app:showAsAction="never" />
+            </group>
+        </menu>
     </item>
-    <item android:id="@+id/action_about_us_menu" android:title="@string/AboutAsMenu" />
-    <item android:id="@+id/action_setting_menu" android:title="@string/SettingsMenu" />
+
 </menu>

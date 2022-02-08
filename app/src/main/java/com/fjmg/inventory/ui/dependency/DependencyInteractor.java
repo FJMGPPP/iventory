@@ -1,18 +1,19 @@
 package com.fjmg.inventory.ui.dependency;
 
-import com.fjmg.inventory.data.DependeciesRepositoryStatic;
+import com.fjmg.inventory.data.DependecyRepositoryDataBase;
 import com.fjmg.inventory.data.model.Dependecy;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class DependencyInteractor implements DependencyListContract.onInteractorListener , DependencyListContract.Interactor
 {
     DependencyListContract.onInteractorListener listener;
-    DependeciesRepositoryStatic repostory;
+    DependecyRepositoryDataBase repostory;
     public DependencyInteractor(DependencyListContract.onInteractorListener listener)
     {
         this.listener = listener;
-        repostory = DependeciesRepositoryStatic.getInstance(this);
+        repostory = DependecyRepositoryDataBase.getInstance(this);
     }
     @Override
     public void onFailure(String message) {
@@ -40,8 +41,7 @@ public class DependencyInteractor implements DependencyListContract.onInteractor
     }
 
     @Override
-    public void load()
-    {
+    public void load() throws ExecutionException, InterruptedException {
         repostory.getList();
     }
 
@@ -53,10 +53,5 @@ public class DependencyInteractor implements DependencyListContract.onInteractor
     @Override
     public void undo(Dependecy dependency) {
         repostory.undo(dependency);
-    }
-
-    @Override
-    public void update(Dependecy dependency) {
-        repostory.update(dependency);
     }
 }

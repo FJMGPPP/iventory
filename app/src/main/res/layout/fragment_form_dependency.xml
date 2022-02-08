@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
-        android:layout_marginTop="116dp"
+        android:layout_marginTop="44dp"
         android:text="@string/shortNombre"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblNombreForm" />
@@ -47,14 +47,15 @@
         style="@style/HintTextApparence"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginEnd="10dp"
         android:ems="10"
         android:hint="ingresa Nombre"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         app:layout_constraintBaseline_toBaselineOf="@+id/lblNombreForm"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/lblNombreForm" />
 
     <TextView
@@ -62,11 +63,12 @@
         style="@style/TitulosReducidos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
         android:layout_marginTop="52dp"
         android:text="@string/Descripcion"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.475"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblNombreForm" />
+        app:layout_constraintTop_toBottomOf="@+id/lblshortnameForm" />
 
     <TextView
         android:id="@+id/lblNombreForm"
@@ -82,28 +84,29 @@
     <EditText
         android:id="@+id/txtDescripcionForm"
         style="@style/HintTextApparence"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="24dp"
+        android:layout_width="203dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="ingresa Descripcion"
-        android:inputType="textPersonName"
+        android:inputType="textMultiLine"
         android:minHeight="48dp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/lblDescripionForm"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/lblDescripionForm" />
-
-    <Button
-        android:id="@+id/AñadirForm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="68dp"
-        android:text="Finalizar"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtShortnameForm" />
+        app:layout_constraintTop_toBottomOf="@+id/lblDescripionForm"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/buttonFin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Finalizar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtDescripcionForm"
+        app:layout_constraintVertical_bias="0.133" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

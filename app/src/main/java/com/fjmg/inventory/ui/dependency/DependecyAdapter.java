@@ -120,14 +120,19 @@ public class DependecyAdapter extends RecyclerView.Adapter<DependecyAdapter.View
             etmDescription = itemView.findViewById(R.id.etmDescription);
             imageView = itemView.findViewById(R.id.image_view);
         }
-
-
         public void bind(Dependecy dependency, DependencyListContract.Adapter.onManageDepedencyLister listener)
         {
             itemView.findViewById(R.id.Eliminar).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     listener.OnDeleteDepedency(dependency);
+                }
+            });
+            itemView.setOnClickListener(new View.OnClickListener()
+            {
+                @Override
+                public void onClick(View view) {
+                    listener.OnEditDepedency(dependency);
                 }
             });
         }

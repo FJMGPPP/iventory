@@ -4,6 +4,7 @@ import com.fjmg.inventory.data.model.Dependecy;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class DependencyPresenter implements DependencyListContract.Presenter, DependencyListContract.onInteractorListener{
     DependencyInteractor interactor;
@@ -19,8 +20,7 @@ public class DependencyPresenter implements DependencyListContract.Presenter, De
     }
 
     @Override
-    public void load()
-    {
+    public void load() throws ExecutionException, InterruptedException {
         view.showProgress();
         interactor.load();
     }
@@ -34,9 +34,6 @@ public class DependencyPresenter implements DependencyListContract.Presenter, De
     public void undo(Dependecy dependency) {
         interactor.undo(dependency);
     }
-    public void update(Dependecy dependency) {
-        interactor.update(dependency);
-    }
 
     @Override
     public void onFailure(String message) {
@@ -44,7 +41,9 @@ public class DependencyPresenter implements DependencyListContract.Presenter, De
     }
 
     @Override
-    public <T> void onSuccess(List<T> List) {
+    public <T> void onSuccess(List<T> List)
+    {
+
         if (List.size()>0){
             view.showData((ArrayList<Dependecy>)List);
         }

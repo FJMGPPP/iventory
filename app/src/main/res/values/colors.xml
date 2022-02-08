@@ -11,4 +11,6 @@
     <color name="gray">#31FFFFFF</color>
     <color name="red_cool">#D2074A</color>
     <color name="primary">#610202</color>
+    <color name="ButtonNavColor">#777375</color>
+    <color name="greenLike">#8EEA6A</color>
 </resources>

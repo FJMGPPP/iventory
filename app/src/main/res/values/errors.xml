@@ -7,4 +7,5 @@
     <string name="errorLoginOnFail">usuario invalido o contraseña invalida</string>
     <string name="errorPasswordNoCoindice">La contraseña no coincide</string>
     <string name="errorUsuarioEmpty">Usuario vacio</string>
+    <string name="errorDependencyFailName">Nombre invalido</string>
 </resources>

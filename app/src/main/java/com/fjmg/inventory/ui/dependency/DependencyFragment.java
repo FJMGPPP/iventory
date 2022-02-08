@@ -20,6 +20,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentResultListener;
+import androidx.navigation.NavController;
 import androidx.navigation.NavDeepLink;
 import androidx.navigation.NavDeepLinkBuilder;
 import androidx.navigation.Navigation;
@@ -40,6 +41,7 @@ import com.google.firebase.components.Dependency;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.concurrent.ExecutionException;
 
 public class DependencyFragment extends Fragment implements DependencyListContract.View, DependencyListContract.Adapter.onManageDepedencyLister {
     FragmentDependencyBinding binding;
@@ -78,7 +80,13 @@ public class DependencyFragment extends Fragment implements DependencyListContra
     @Override
     public void onStart() {
         super.onStart();
-        presenter.load();
+        try {
+            presenter.load();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     @Nullable
@@ -93,6 +101,12 @@ public class DependencyFragment extends Fragment implements DependencyListContra
     {
         super.onViewCreated(view, savedInstanceState);
         initRvDependency();
+        binding.floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(DependencyFragment.this).navigate(R.id.action_dependencyFragment_to_formDepedencyFragment);
+            }
+        });
     }
 
     /**
@@ -105,32 +119,32 @@ public class DependencyFragment extends Fragment implements DependencyListContra
         //2. Indicar el diseño tendra el layout;
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL,false);
         //3. Asigno el layauot al recycleview
-        binding.rvDependency.setLayoutManager(linearLayoutManager);
+        binding.rvSections.setLayoutManager(linearLayoutManager);
         //4. Asignar datos;
-        binding.rvDependency.setAdapter(adapter);
+        binding.rvSections.setAdapter(adapter);
     }
 
     @Override
     public void hideProgress() {
-        binding.progressCircularDependency.progressBar.setVisibility(View.INVISIBLE);
+        binding.progressCircularSections.progressBar.setVisibility(View.INVISIBLE);
     }
 
     @Override
     public void showProgress() {
-        binding.progressCircularDependency.progressBar.setVisibility(View.VISIBLE);
+        binding.progressCircularSections.progressBar.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void showData(ArrayList list)
     {
         adapter.update(list);
-        binding.AlertDepedencyData.setVisibility(View.INVISIBLE);
+        binding.AlertSectionsData.setVisibility(View.INVISIBLE);
     }
 
     @Override
     public void showNoData()
     {
-        binding.AlertDepedencyData.setVisibility(View.VISIBLE);
+        binding.AlertSectionsData.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -148,7 +162,7 @@ public class DependencyFragment extends Fragment implements DependencyListContra
         }
         if (adapter.isEmpty)
         {
-            binding.AlertDepedencyData.setVisibility(View.VISIBLE);
+            binding.AlertSectionsData.setVisibility(View.VISIBLE);
         }
         //Notificar de que se elimino una depdendencia
         Bundle paquete = new Bundle();
@@ -183,7 +197,7 @@ public class DependencyFragment extends Fragment implements DependencyListContra
         }
         if (adapter.isEmpty)
         {
-            binding.AlertDepedencyData.setVisibility(View.VISIBLE);
+            binding.AlertSectionsData.setVisibility(View.VISIBLE);
         }
         adapter.notifyDataSetChanged();
     }
@@ -200,22 +214,8 @@ public class DependencyFragment extends Fragment implements DependencyListContra
     @Override
     public void OnEditDepedency(Dependecy dependency) {
         Bundle bundle = new Bundle();
-        bundle.putString(BaseDialogFragment.TITLE,"Modificando depedencia");
-        bundle.putString(BaseDialogFragment.MESSAGE,"¿Quieres modificar la dependencia?");
-        NavHostFragment.findNavController(DependencyFragment.this).navigate(R.id.action_dependencyFragment_to_baseDialogFragment, bundle);
-        //Una de las claves para realizar la comunicación entre fragmentos (padre-hijo) es utilizar los métodos supportFragmentManager
-        // de la actividad para realizar el intercambio de información. //IMPORTANTE GETSUPPORTFRAGMENTMANAGER
-        getActivity().getSupportFragmentManager().setFragmentResultListener(BaseDialogFragment.REQUEST, this, new FragmentResultListener() {
-            @Override
-            public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle bundle) {
-                //Si la respuesta es true en deletedDependency se procede con el caso de uso DELETE
-                if (bundle.getBoolean(BaseDialogFragment.KEY_BUNDLE))
-                {
-                    affterModicateDependecy = dependency;
-                    presenter.update(dependency);
-                }
-            }
-        });
+        bundle.putSerializable("Dependency",dependency);
+        NavHostFragment.findNavController(DependencyFragment.this).navigate(R.id.action_dependencyFragment_to_formDepedencyFragment, bundle);
     }
     @Override
     public void OnDeleteDepedency(Dependecy dependency) {

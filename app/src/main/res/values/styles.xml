@@ -4,6 +4,12 @@
         <item name="boxBackgroundMode">none</item>
         <item name="android:background">@drawable/shape_textinputlayout</item>
     </style>
+
+    <style name="HintTextApparence.NoBackground.SectionsBeutiful">
+        <item name="boxBackgroundMode">none</item>
+
+    </style>
+
     <style name="HintTextApparence.NoBackground">
         <item name="boxBackgroundMode">none</item>
         <item name="android:background">@null</item>

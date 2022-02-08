@@ -82,4 +82,25 @@
     <string name="editUser">Cambiar correo del usuario</string>
     <string name="key_rigtone">rigtone</string>
     <string name="key_help_point">help</string>
+    <string name="action_search">search</string>
+    <string name="dependencys">Depedencias</string>
+    <string name="sections">secciones</string>
+    <string name="opciones">opciones</string>
+    <string name="info">info</string>
+    <string name="menuDescripcion">descripcion</string>
+    <string name="mapa">mapa</string>
+    <string name="EligeDependencia">Dependencia</string>
+    <string name="agregar">Agregar</string>
+    <string name="siguiente">siguiente</string>
+    <string name="errorDependencyFailShortName">Nombre corto invalido</string>
+    <string name="errorDependencyFailDescription">Descripcion invalida</string>
+    <string name="errorDependencyDuplicateName">Nombre corto duplicado</string>
+    <string name="errorDependencyShortNameDuplicateName">Nombre corto duplicado</string>
+    <string name="AgregaDepedencia">No tienes ninguna depedencia crea una</string>
+    <string name="errorSectionFailName">Nombre invalido</string>
+    <string name="errorSectionFailShortName">Nombre corto invalido</string>
+    <string name="errorSectionFailDescription">Descripcion Invalida</string>
+    <string name="errorSectionIdNoSelected">Selecciona una dependencia</string>
+    <string name="errorSectionNameDuplicate">Nombre duplicado</string>
+    <string name="errorSectionShortNameDuplicate">Nombre corto duplicado</string>
 </resources>

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="300dp"
+    android:layout_margin="20dp"
+    android:foreground="@drawable/shape_textinputlayout">
+
+    <TextView
+        android:id="@+id/lblDependencia"
+        style="@style/TitulosReducidos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="104dp"
+        android:text="@string/EligeDependencia"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblDescripcion" />
+
+    <TextView
+        android:id="@+id/tvNombre"
+        style="@style/textoNewakeDefault"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:editable="false"
+        android:fontFamily="@font/newake"
+        android:text="TextView"
+        android:textSize="20sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/lblNombre"
+        app:layout_constraintStart_toStartOf="@+id/brVertical" />
+
+    <TextView
+        android:id="@+id/tvDependenciName"
+        style="@style/textoNewakeDefault"
+        android:layout_width="192dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:editable="false"
+        android:fontFamily="@font/newake"
+        android:text="TextView"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/lblDependencia"
+        app:layout_constraintTop_toBottomOf="@+id/etmDescription"
+        app:layout_constraintVertical_bias="0.016" />
+
+    <TextView
+        android:id="@+id/tvShortname"
+        style="@style/textoNewakeDefault"
+        android:layout_width="94dp"
+        android:layout_height="20dp"
+        android:layout_margin="20dp"
+        android:layout_marginStart="16dp"
+        android:editable="false"
+        android:text="TextView"
+        app:layout_constraintBaseline_toBaselineOf="@+id/lblShortName"
+        app:layout_constraintStart_toStartOf="@+id/brVertical" />
+
+    <EditText
+        android:id="@+id/etmDescription"
+        style="@style/textoNewakeDefault"
+        android:layout_width="172dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="16dp"
+        android:editable="false"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        app:layout_constraintBaseline_toBaselineOf="@+id/lblDescripcion"
+        app:layout_constraintStart_toStartOf="@+id/brVertical"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/lblShortName"
+        style="@style/TitulosReducidos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/shortNombre"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblNombre" />
+
+    <TextView
+        android:id="@+id/lblNombre"
+        style="@style/TitulosReducidos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/Nombre"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />/>
+
+    <TextView
+        android:id="@+id/lblDescripcion"
+        style="@style/TitulosReducidos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/Descripcion"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblShortName" />/>
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/brVertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="end"
+        app:constraint_referenced_ids="lblNombre,lblShortName,lblDescripcion,lblDependencia"
+        tools:layout_editor_absoluteX="118dp"
+        tools:layout_editor_absoluteY="20dp" />
+
+    <Button
+        android:id="@+id/Eliminar"
+        android:layout_width="115dp"
+        android:layout_height="48dp"
+        android:text="Eliminar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.429"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblDependencia"
+        app:layout_constraintVertical_bias="0.789" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+

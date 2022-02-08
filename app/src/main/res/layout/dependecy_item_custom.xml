@@ -34,8 +34,8 @@
     <EditText
         android:id="@+id/etmDescription"
         style="@style/textoNewakeDefault"
-        android:layout_width="154dp"
-        android:layout_height="46dp"
+        android:layout_width="172dp"
+        android:layout_height="100dp"
         android:layout_marginStart="16dp"
         android:ems="10"
         android:gravity="start|top"
@@ -89,20 +89,20 @@
         android:id="@+id/Eliminar"
         android:layout_width="115dp"
         android:layout_height="37dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="8dp"
         android:text="Eliminar"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.398"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/image_view"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintEnd_toStartOf="@+id/etmDescription"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/image_view"
         android:layout_width="37dp"
         android:layout_height="34dp"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/Eliminar"
+        app:layout_constraintEnd_toStartOf="@+id/etmDescription"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblDescripcion" />
 </androidx.constraintlayout.widget.ConstraintLayout>
